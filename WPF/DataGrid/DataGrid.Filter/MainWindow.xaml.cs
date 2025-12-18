@@ -1,13 +1,7 @@
-﻿using System.Text;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DataGrid.Filter;
 
@@ -15,20 +9,28 @@ namespace DataGrid.Filter;
 /// Interaction logic for MainWindow.xaml
 /// </summary>
 public partial class MainWindow {
-    private readonly List<Employee> _employees;
+    private readonly List<Employee>  _employees;
+    private readonly ICollectionView _collectionView;
 
     public MainWindow() {
         InitializeComponent();
         _employees = Employee.FakeMany(10).ToList();
+        _collectionView = CollectionViewSource.GetDefaultView(_employees);
+        DataGrid.ItemsSource = _collectionView;
+        _collectionView.Filter = item => {
+                                     if (item is not Employee employee) return false;
+                                     var key = FilterTextBox.Text;
+                                     if (employee.FirstName == null || employee.LastName == null) return false;
+                                     return employee.FirstName.Contains(key) || employee.LastName.Contains(key);
+                                 };
     }
 
-
     private void FilterTextBox_OnTextChanged(object sender, TextChangedEventArgs e) {
-        CollectionViewSource.GetDefaultView(DataGrid.ItemsSource).Refresh();
+        _collectionView.Refresh();
     }
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e) {
         _employees.Add(Employee.FakeOne());
-        CollectionViewSource.GetDefaultView(DataGrid.ItemsSource).Refresh();
+        _collectionView.Refresh();
     }
 }
