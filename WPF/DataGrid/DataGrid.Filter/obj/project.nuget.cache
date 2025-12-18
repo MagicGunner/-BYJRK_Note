@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "zuj7DZ5Qh6Y=",
+  "success": true,
+  "projectFilePath": "E:\\00-Code\\十月的寒流\\WPF\\DataGrid\\DataGrid.Filter\\DataGrid.Filter.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MissBlue\\.nuget\\packages\\bogus\\35.6.5\\bogus.35.6.5.nupkg.sha512",
+    "C:\\Users\\MissBlue\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+    "C:\\Users\\MissBlue\\.nuget\\packages\\handycontrol\\3.5.1\\handycontrol.3.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}
