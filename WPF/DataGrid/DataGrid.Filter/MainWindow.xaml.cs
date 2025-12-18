@@ -14,23 +14,14 @@ namespace DataGrid.Filter;
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class MainWindow : Window {
+public partial class MainWindow {
     private readonly List<Employee> _employees;
 
     public MainWindow() {
         InitializeComponent();
         _employees = Employee.FakeMany(10).ToList();
-        var cvs = FindResource("CollectionViewSource") as CollectionViewSource;
-        cvs?.Source = _employees;
     }
 
-    private void CollectionViewSource_OnFilter(object sender, FilterEventArgs e) {
-        var employee = e.Item as Employee;
-        var filter = FilterTextBox.Text;
-
-        if (employee is { FirstName: not null, LastName: not null })
-            e.Accepted = employee.FirstName.Contains(filter) || employee.LastName.Contains(filter);
-    }
 
     private void FilterTextBox_OnTextChanged(object sender, TextChangedEventArgs e) {
         CollectionViewSource.GetDefaultView(DataGrid.ItemsSource).Refresh();

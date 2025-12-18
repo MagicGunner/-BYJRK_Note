@@ -7,9 +7,6 @@
         xmlns:local="clr-namespace:DataGrid.Filter"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <CollectionViewSource x:Key="CollectionViewSource" Filter="CollectionViewSource_OnFilter"></CollectionViewSource>
-    </Window.Resources>
     <Grid>
         <DockPanel>
             <StackPanel Margin="5" Orientation="Horizontal" DockPanel.Dock="Bottom">
@@ -20,7 +17,6 @@
             </StackPanel>
             <DataGrid Name="DataGrid"
                       d:ItemsSource="{d:SampleData ItemCount=10}"
-                      ItemsSource="{Binding Source={StaticResource CollectionViewSource}}"
                       CanUserDeleteRows="False"
                       AutoGenerateColumns="False">
                 <DataGrid.Columns>
