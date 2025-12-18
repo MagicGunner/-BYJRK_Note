@@ -1,10 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
 using System.ComponentModel;
 using System.Windows.Data;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-namespace DataGrid.Filter;
+namespace DataGrid;
 
 public partial class MainWindowViewModel : ObservableObject {
     [ObservableProperty]
@@ -33,7 +33,21 @@ public partial class MainWindowViewModel : ObservableObject {
         EmployeeCollection.Refresh();
     }
 
+    [RelayCommand]
+    private void DeleteEmployees(IList selectedItems) {
+        foreach (var item in selectedItems.Cast<Employee>().ToList()) Employees.Remove(item);
+
+        for (var i = 0; i < Employees.Count; i++) Employees[i].Id = i + 1;
+
+        EmployeeCollection.Refresh();
+    }
+
     partial void OnKeyChanged(string? value) {
         EmployeeCollection.Refresh();
+    }
+
+    [RelayCommand]
+    private void GetSumSalary(IList selectedItems) {
+        var sum = selectedItems.Cast<Employee>().Sum(e => e.Salary);
     }
 }

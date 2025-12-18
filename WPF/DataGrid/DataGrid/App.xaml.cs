@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using Bogus;
 
-namespace DataGrid.Filter;
+namespace DataGrid;
 
 /// <summary>
 /// Interaction logic for App.xaml

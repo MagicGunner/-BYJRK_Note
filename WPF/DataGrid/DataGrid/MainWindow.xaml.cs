@@ -1,4 +1,4 @@
-﻿namespace DataGrid.Filter;
+﻿namespace DataGrid;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml

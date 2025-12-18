@@ -1,6 +1,6 @@
 ﻿using Bogus;
 
-namespace DataGrid.Filter;
+namespace DataGrid;
 
 public class Employee {
     public        int                   Id                  { get; set; }

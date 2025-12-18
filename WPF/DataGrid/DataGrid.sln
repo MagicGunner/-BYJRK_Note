@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGrid.Filter", "DataGrid.Filter\DataGrid.Filter.csproj", "{53B77896-7519-4A9B-978F-47AA2350722F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGrid", "DataGrid\DataGrid.csproj", "{53B77896-7519-4A9B-978F-47AA2350722F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
