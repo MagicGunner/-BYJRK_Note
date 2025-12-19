@@ -59,4 +59,11 @@ public partial class MainWindowViewModel : ObservableObject {
     private void GetSumSalary() {
         var sum = SelectedItems.Cast<Employee>().Sum(e => e.Salary);
     }
+
+    [RelayCommand]
+    private void Calculate() {
+        foreach (var employee in Employees) { employee.IsSelected = employee.Salary > 100000; }
+
+        EmployeeCollection.Refresh();
+    }
 }
