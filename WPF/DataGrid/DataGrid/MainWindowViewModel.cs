@@ -29,7 +29,7 @@ public partial class MainWindowViewModel : ObservableObject {
         }
     } = 1;
 
-    private int MaxPageNum => Employees.Count / PageSize + 1;
+    public int MaxPageNum => Employees.Count / PageSize + 1;
 
     /// <summary>
     /// 每一页能显示多少项目
@@ -69,6 +69,7 @@ public partial class MainWindowViewModel : ObservableObject {
         if (e.Action is NotifyCollectionChangedAction.Add or NotifyCollectionChangedAction.Remove) {
             for (var i = 0; i < Employees.Count; i++) Employees[i].Id = i + 1;
 
+            OnPropertyChanged(nameof(MaxPageNum));
             OnPageNumChanged(PageNum);
         }
     }

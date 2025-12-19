@@ -27,10 +27,12 @@
                 <!-- <Button Content="Go" Margin="5 0 0 0" Command="{Binding GoCommand}" /> -->
 
 
-                <hc:TextBox Name="PageNumTextBox" hc:InfoElement.Placeholder="Page"
-                            Text="{Binding PageNum, UpdateSourceTrigger=PropertyChanged}" />
+                <!-- <hc:TextBox Name="PageNumTextBox" hc:InfoElement.Placeholder="Page" -->
+                <!--             Text="{Binding PageNum, UpdateSourceTrigger=PropertyChanged}" /> -->
 
-
+                <hc:Pagination MaxPageCount="{Binding MaxPageNum, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                               PageIndex="{Binding PageNum, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                               IsJumpEnabled="True" />
             </StackPanel>
             <DataGrid Name="DataGrid"
                       ItemsSource="{Binding EmployeeDisplay}"
