@@ -11,7 +11,10 @@ public partial class MainWindowViewModel : ObservableObject {
     private List<Employee> _employees;
 
     [ObservableProperty]
-    private ICollectionView _employeeCollection;
+    private IEnumerable<Employee> _employeeDisplay;
+
+    // [ObservableProperty]
+    // private ICollectionView _employeeCollection;
 
     [ObservableProperty]
     private int _pageNum = 1;
@@ -29,7 +32,8 @@ public partial class MainWindowViewModel : ObservableObject {
 
     public MainWindowViewModel() {
         Employees = Employee.FakeMany(100).ToList();
-        EmployeeCollection = CollectionViewSource.GetDefaultView(Employees);
+        EmployeeDisplay = Employees.Take(PageSize);
+        // EmployeeCollection = CollectionViewSource.GetDefaultView(Employees);
 
         // 实现过滤功能
         // EmployeeCollection.Filter = (item => {
@@ -40,17 +44,17 @@ public partial class MainWindowViewModel : ObservableObject {
         //                              });
 
         // 通过过滤功能实现分页
-        EmployeeCollection.Filter = item => {
-                                        if (item is not Employee employee) return false;
-                                        if (PageNum < 1 || PageNum > Employees.Count / PageSize + 2) return false;
-                                        return employee.Id >= (PageNum - 1) * PageSize && employee.Id < PageNum * PageSize;
-                                    };
+        // EmployeeCollection.Filter = item => {
+        //                                 if (item is not Employee employee) return false;
+        //                                 if (PageNum < 1 || PageNum > Employees.Count / PageSize + 2) return false;
+        //                                 return employee.Id >= (PageNum - 1) * PageSize && employee.Id < PageNum * PageSize;
+        //                             };
     }
 
     [RelayCommand]
     private void AddEmployee() {
         Employees.Add(Employee.FakeOne());
-        EmployeeCollection.Refresh();
+        // EmployeeCollection.Refresh();
     }
 
     [RelayCommand]
@@ -59,11 +63,11 @@ public partial class MainWindowViewModel : ObservableObject {
 
         for (var i = 0; i < Employees.Count; i++) Employees[i].Id = i + 1;
 
-        EmployeeCollection.Refresh();
+        // EmployeeCollection.Refresh();
     }
 
     partial void OnKeyChanged(string? value) {
-        EmployeeCollection.Refresh();
+        // EmployeeCollection.Refresh();
     }
 
     // [RelayCommand]
@@ -80,15 +84,21 @@ public partial class MainWindowViewModel : ObservableObject {
     private void Calculate() {
         foreach (var employee in Employees) { employee.IsSelected = employee.Salary > 100000; }
 
-        EmployeeCollection.Refresh();
+        // EmployeeCollection.Refresh();
     }
 
     [RelayCommand]
     private void Go() {
-        EmployeeCollection.Refresh();
+        // EmployeeCollection.Refresh();
+    }
+
+    [RelayCommand]
+    private void GotoPage(string pageNum) {
+        PageNum = int.TryParse(pageNum, out var num) ? num : 1;
+        EmployeeDisplay = Employees.Skip(PageSize * (PageNum - 1)).Take(PageSize);
     }
 
     partial void OnPageNumChanged(int value) {
-        EmployeeCollection.Refresh();
+        // EmployeeCollection.Refresh();
     }
 }

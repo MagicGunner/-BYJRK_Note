@@ -23,13 +23,19 @@
                 <!--             Text="{Binding Key, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" -->
                 <!--             hc:InfoElement.Placeholder="Filter data by name" -->
                 <!--             InputMethod.IsInputMethodEnabled="False" /> -->
-                <hc:TextBox Name="PageNumTextBox" hc:InfoElement.Placeholder="Page"
-                            Text="{Binding PageNum, UpdateSourceTrigger=PropertyChanged}" />
-                <Button Content="Go" Margin="5 0 0 0" Command="{Binding GoCommand}" />
+
+                <!-- <hc:TextBox Name="PageNumTextBox" hc:InfoElement.Placeholder="Page" -->
+                <!--             Text="{Binding PageNum, UpdateSourceTrigger=PropertyChanged}" /> -->
+                <!-- <Button Content="Go" Margin="5 0 0 0" Command="{Binding GoCommand}" /> -->
+
+                <hc:TextBox Name="PageNumTextBox" hc:InfoElement.Placeholder="Page" />
+                <Button Content="Go" Margin="5 0 0 0" Command="{Binding GotoPageCommand}"
+                        CommandParameter="{Binding ElementName=PageNumTextBox, Path=Text}" />
+
             </StackPanel>
             <DataGrid Name="DataGrid"
                       d:ItemsSource="{Binding Employees}"
-                      ItemsSource="{Binding EmployeeCollection}"
+                      ItemsSource="{Binding EmployeeDisplay}"
                       SelectionMode="Extended"
                       CanUserDeleteRows="False"
                       AutoGenerateColumns="False">
