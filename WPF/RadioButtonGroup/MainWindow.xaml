@@ -1,0 +1,135 @@
+﻿<hc:BlurWindow x:Class="RadioButtonGroup.MainWindow"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:hc="https://handyorg.github.io/handycontrol"
+               xmlns:vc="clr-namespace:RadioButtonGroup.ValueConverters"
+               xmlns:local="clr-namespace:RadioButtonGroup"
+               xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+               xmlns:be="clr-namespace:RadioButtonGroup.Behaviors"
+               xmlns:sys="clr-namespace:System;assembly=mscorlib"
+               mc:Ignorable="d"
+               Style="{StaticResource WindowBlur}"
+               d:DataContext="{d:DesignInstance local:MainWindowViewModel, IsDesignTimeCreatable=true}"
+               Title="MainWindow" Height="450" Width="800">
+    <hc:BlurWindow.Resources>
+        <Style TargetType="hc:Shield" BasedOn="{StaticResource {x:Type hc:Shield}}">
+            <Setter Property="Margin" Value="0 0 0 8" />
+        </Style>
+        <Style TargetType="Separator" BasedOn="{StaticResource {x:Type Separator}}">
+            <Setter Property="Margin" Value="0 15 0 15" />
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Width" Value="170" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="BorderBrush" Value="ForestGreen" />
+        </Style>
+    </hc:BlurWindow.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+
+        <!-- RadioButton绑定到一个布尔值 -->
+        <StackPanel Margin="10">
+            <hc:Shield Subject="RadioButtonGroup" Status="Boolean"></hc:Shield>
+            <DockPanel>
+                <DockPanel.Resources>
+                    <vc:BoolInverterConverter x:Key="Conv"></vc:BoolInverterConverter>
+                </DockPanel.Resources>
+                <RadioButton Content="True" IsChecked="{Binding BooleanValue}"></RadioButton>
+                <RadioButton Content="False" Margin="10 0 0 0"
+                             IsChecked="{Binding BooleanValue, Converter={StaticResource Conv}}">
+                </RadioButton>
+                <TextBox Text="{Binding BooleanValue, StringFormat='BooleanValue: {0}'}" />
+            </DockPanel>
+
+            <!-- RadioButton绑定到枚举类型 -->
+            <Separator />
+            <hc:Shield Subject="RadioButtonGroup" Status="Enum" />
+            <DockPanel>
+                <DockPanel.Resources>
+                    <vc:ComparisonConverter x:Key="Conv"></vc:ComparisonConverter>
+                </DockPanel.Resources>
+                <RadioButton Content="Apple"
+                             IsChecked="{Binding SelectedFruit, Converter={StaticResource Conv}, ConverterParameter={x:Static local:Fruit.Apple}}" />
+                <RadioButton Content="Banana" Margin="10 0"
+                             IsChecked="{Binding SelectedFruit, Converter={StaticResource Conv}, ConverterParameter={x:Static local:Fruit.Banana}}" />
+                <RadioButton Content=" Melon"
+                             IsChecked="{Binding SelectedFruit, Converter={StaticResource Conv}, ConverterParameter={x:Static local:Fruit.Melon}}" />
+                <TextBox Text="{Binding SelectedFruit, StringFormat='SelectedFruit: {0}'}"></TextBox>
+            </DockPanel>
+
+            <!-- RadioButton绑定到Int类型 -->
+            <Separator />
+            <hc:Shield Subject="RadioButtonGroup" Status="Integer" />
+            <DockPanel>
+                <DockPanel.Resources>
+                    <vc:ComparisonConverter x:Key="Conv"></vc:ComparisonConverter>
+                </DockPanel.Resources>
+                <RadioButton Content="One">
+                    <RadioButton.IsChecked>
+                        <Binding Path="SelectedNum" Converter="{StaticResource Conv}">
+                            <Binding.ConverterParameter>
+                                <sys:Int32>1</sys:Int32>
+                            </Binding.ConverterParameter>
+                        </Binding>
+                    </RadioButton.IsChecked>
+                </RadioButton>
+                <RadioButton Content="Two">
+                    <RadioButton.IsChecked>
+                        <Binding Path="SelectedNum" Converter="{StaticResource Conv}">
+                            <Binding.ConverterParameter>
+                                <sys:Int32>2</sys:Int32>
+                            </Binding.ConverterParameter>
+                        </Binding>
+                    </RadioButton.IsChecked>
+                </RadioButton>
+                <RadioButton Content="Three">
+                    <RadioButton.IsChecked>
+                        <Binding Path="SelectedNum" Converter="{StaticResource Conv}">
+                            <Binding.ConverterParameter>
+                                <sys:Int32>3</sys:Int32>
+                            </Binding.ConverterParameter>
+                        </Binding>
+                    </RadioButton.IsChecked>
+                </RadioButton>
+                <TextBox Text="{Binding SelectedNum, StringFormat='SelectedNum: {0}'}" />
+            </DockPanel>
+
+            <!-- RadioButton 绑定一个枚举类型，但是使用附加属性和行为，容器为ButtonGroup -->
+            <Separator />
+            <hc:Shield Margin="0 0 0 15" Subject="RadioButtonGroup" Status="Enum" />
+            <DockPanel>
+                <hc:ButtonGroup Width="200">
+                    <i:Interaction.Behaviors>
+                        <be:SelectedItemBehavior
+                            SelectedItem="{Binding SelectedVegetable, Mode=TwoWay}" />
+                    </i:Interaction.Behaviors>
+                    <RadioButton Content="Carrot" Tag="{x:Static local:Vegetable.Carrot}" />
+                    <RadioButton Content="Potato" Tag="{x:Static local:Vegetable.Potato}" />
+                    <RadioButton Content="Tomato" Tag="{x:Static local:Vegetable.Tomato}" />
+                </hc:ButtonGroup>
+                <TextBox
+                    Text="{Binding SelectedVegetable, StringFormat='SelectedVegetable: {0}'}" />
+            </DockPanel>
+
+            <!-- RadioButton 绑定一个枚举类型，但是使用附加属性和行为，容器为StackPanel -->
+            <Separator />
+            <hc:Shield Margin="0 0 0 15" Subject="RadioPanel" Status="Enum" />
+            <DockPanel>
+                <StackPanel Orientation="Horizontal">
+                    <i:Interaction.Behaviors>
+                        <be:SelectedItemBehavior
+                            SelectedItem="{Binding SelectedVegetable, Mode=TwoWay}" />
+                    </i:Interaction.Behaviors>
+                    <RadioButton Content="Carrot" Tag="{x:Static local:Vegetable.Carrot}" />
+                    <RadioButton Content="Potato" Tag="{x:Static local:Vegetable.Potato}" Margin="10 0" />
+                    <RadioButton Content="Tomato" Tag="{x:Static local:Vegetable.Tomato}" />
+                </StackPanel>
+                <TextBox
+                    Text="{Binding SelectedVegetable, StringFormat='SelectedVegetable: {0}'}" />
+            </DockPanel>
+        </StackPanel>
+    </ScrollViewer>
+</hc:BlurWindow>
