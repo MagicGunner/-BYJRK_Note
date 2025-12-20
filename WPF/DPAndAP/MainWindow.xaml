@@ -16,19 +16,24 @@
         <!-- </Style> -->
     </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <local:CustomTextBox Grid.Row="0" Text="MissBlue" IsHighlight="True" Margin="5" />
-        <local:CustomTextBox Text="MagicGunner" Margin="5">
-            <Grid.Row>1</Grid.Row>
-            <local:CustomTextBox.IsHighlight>True</local:CustomTextBox.IsHighlight>
-        </local:CustomTextBox>
-        <local:CustomTextBox Grid.Row="2" local:TextBoxHelper.Title="TypeMoon"
-                             Text="{Binding RelativeSource={RelativeSource Self}, Path=(local:TextBoxHelper.Title)}"
-                             Margin="5" />
+        <!-- <Grid.RowDefinitions> -->
+        <!--     <RowDefinition /> -->
+        <!--     <RowDefinition /> -->
+        <!--     <RowDefinition /> -->
+        <!-- </Grid.RowDefinitions> -->
+        <!-- <local:CustomTextBox Grid.Row="0" Text="MissBlue" IsHighlight="True" Margin="5" /> -->
+        <!-- <local:CustomTextBox Text="MagicGunner" Margin="5"> -->
+        <!--     <Grid.Row>1</Grid.Row> -->
+        <!--     <local:CustomTextBox.IsHighlight>True</local:CustomTextBox.IsHighlight> -->
+        <!-- </local:CustomTextBox> -->
+        <!-- <local:CustomTextBox Grid.Row="2" local:TextBoxHelper.Title="TypeMoon" -->
+        <!--                      Text="{Binding RelativeSource={RelativeSource Self}, Path=(local:TextBoxHelper.Title)}" -->
+        <!--                      Margin="5" /> -->
+
+        <StackPanel Orientation="Vertical">
+            <TextBox x:Name="TBox" Text="MissBlue" local:TextBoxHelper.MonitorTextChange="True" />
+            <CheckBox IsChecked="{Binding ElementName=TBox, Path=(local:TextBoxHelper.HasText), Mode=OneWay}"></CheckBox>
+        </StackPanel>
 
     </Grid>
 </Window>
