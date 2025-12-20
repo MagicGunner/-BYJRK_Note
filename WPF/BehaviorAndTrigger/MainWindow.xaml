@@ -1,0 +1,62 @@
+﻿<Window x:Class="BehaviorAndTrigger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:BehaviorAndTrigger"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:MainWindowViewModel, IsDesignTimeCreatable=true}"
+        Title="MainWindow" Height="450" Width="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <!-- <Grid> -->
+    <!--     <Border Width="100" Height="100" Background="Red"> -->
+    <!--         <i:Interaction.Behaviors> -->
+    <!--             <i:MouseDragElementBehavior></i:MouseDragElementBehavior> -->
+    <!--             <local:MyBehavior></local:MyBehavior> -->
+    <!--         </i:Interaction.Behaviors> -->
+    <!--     </Border> -->
+    <!-- </Grid> -->
+
+    <StackPanel>
+        <TextBox Name="TBox" Text="{Binding Text}">
+            <i:Interaction.Behaviors>
+                <local:MouseWheelBehavior MaxValue="100" MinValue="0" Step="5" />
+            </i:Interaction.Behaviors>
+        </TextBox>
+        <Button Content="Clear" HorizontalAlignment="Left">
+            <i:Interaction.Behaviors>
+                <local:ClearTextBehavior Target="{Binding ElementName=TBox}"></local:ClearTextBehavior>
+            </i:Interaction.Behaviors>
+        </Button>
+        <Button Content="Close" HorizontalAlignment="Left">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:CallMethodAction TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                                        MethodName="Close" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <Button Content="Close" HorizontalAlignment="Left" Padding="10" FontSize="24">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:CallMethodAction TargetObject="{Binding Source={x:Static Application.Current}}"
+                                        MethodName="Shutdown" />
+                </i:EventTrigger>
+                <i:DataTrigger
+                    Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsMouseOver}"
+                    Value="True">
+                    <i:ChangePropertyAction
+                        TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Button}}"
+                        PropertyName="Background" Value="Red">
+                    </i:ChangePropertyAction>
+                </i:DataTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+    </StackPanel>
+</Window>
