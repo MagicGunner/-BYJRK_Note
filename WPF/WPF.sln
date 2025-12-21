@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsControlDemo", "ItemsCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListBoxDemo", "ListBoxDemo\ListBoxDemo.csproj", "{2FD04E48-81F9-43B2-B365-2041F2A4DCE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFStyles", "WPFStyles\WPFStyles.csproj", "{B36A2CDB-4E6F-4108-AFB4-464C75E96735}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextBoxValidateDemo", "TextBoxValidateDemo\TextBoxValidateDemo.csproj", "{3F1F2427-B70D-4D23-84FB-7AE9C3EF8CFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +52,13 @@ Global
 		{2FD04E48-81F9-43B2-B365-2041F2A4DCE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FD04E48-81F9-43B2-B365-2041F2A4DCE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FD04E48-81F9-43B2-B365-2041F2A4DCE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B36A2CDB-4E6F-4108-AFB4-464C75E96735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B36A2CDB-4E6F-4108-AFB4-464C75E96735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B36A2CDB-4E6F-4108-AFB4-464C75E96735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B36A2CDB-4E6F-4108-AFB4-464C75E96735}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F1F2427-B70D-4D23-84FB-7AE9C3EF8CFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F1F2427-B70D-4D23-84FB-7AE9C3EF8CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F1F2427-B70D-4D23-84FB-7AE9C3EF8CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F1F2427-B70D-4D23-84FB-7AE9C3EF8CFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

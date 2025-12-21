@@ -1,0 +1,32 @@
+﻿<Window x:Class="WPFStyles.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFStyles"
+        Loaded="MainWindow_OnLoaded"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel Orientation="Vertical">
+        <ItemsControl HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32">
+            <TextBlock Text="TextBlock"></TextBlock>
+        </ItemsControl>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontSize="32">
+            <TextBlock Text="TextBlock"></TextBlock>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel.Style>
+                <Style>
+                    <Setter Property="TextElement.FontSize" Value="32"></Setter>
+                    <Setter Property="TextElement.Foreground" Value="Red"></Setter>
+                </Style>
+            </StackPanel.Style>
+            <TextBlock Text="TextBlock"></TextBlock>
+            <TextBox Text="TextBox"></TextBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="Panel">
+            <TextBlock Text="TextBlock"></TextBlock>
+            <TextBox Text="TextBox"></TextBox>
+        </StackPanel>
+    </StackPanel>
+</Window>
