@@ -1,5 +1,5 @@
 ﻿namespace WindowCloseDemo.Messages;
 
 public class CloseWindowMessage {
-    public object? Sender { get; set; }
+    public WeakReference? Sender { get; set; }
 }

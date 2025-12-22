@@ -23,7 +23,7 @@ public partial class MainWindow : Window, ICloseWindow {
         InitializeComponent();
 
         WeakReferenceMessenger.Default.Register<CloseWindowMessage>(this, (_, m) => {
-                                                                              if (m.Sender == DataContext) {
+                                                                              if (m.Sender?.Target == DataContext) {
                                                                                   Close();
                                                                               }
                                                                           });

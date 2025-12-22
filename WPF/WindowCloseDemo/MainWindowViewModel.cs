@@ -37,7 +37,7 @@ public partial class MainWindowViewModel : ObservableObject {
     [RelayCommand]
     private void CloseByMessage() {
         if (SaveData()) {
-            WeakReferenceMessenger.Default.Send(new CloseWindowMessage { Sender = this });
+            WeakReferenceMessenger.Default.Send(new CloseWindowMessage { Sender = new WeakReference(this) });
         }
     }
 }
