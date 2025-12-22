@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowCloseDemo", "WindowCl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConvertersDemo", "ValueConvertersDemo\ValueConvertersDemo.csproj", "{6864432E-CD7B-4FE0-A454-A70A3605DFAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlnsDefinitionDemo", "XmlnsDefinitionDemo\XmlnsDefinitionDemo.csproj", "{90E5BA55-9A17-4641-85A3-E21C2FC8CF03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlnsDefinitionDemo.Shared", "XmlnsDefinitionDemo.Shared\XmlnsDefinitionDemo.Shared.csproj", "{EA8392AE-8C0B-4AE6-A7BC-440D94DEC9D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +76,13 @@ Global
 		{6864432E-CD7B-4FE0-A454-A70A3605DFAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6864432E-CD7B-4FE0-A454-A70A3605DFAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6864432E-CD7B-4FE0-A454-A70A3605DFAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90E5BA55-9A17-4641-85A3-E21C2FC8CF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90E5BA55-9A17-4641-85A3-E21C2FC8CF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90E5BA55-9A17-4641-85A3-E21C2FC8CF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90E5BA55-9A17-4641-85A3-E21C2FC8CF03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA8392AE-8C0B-4AE6-A7BC-440D94DEC9D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA8392AE-8C0B-4AE6-A7BC-440D94DEC9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA8392AE-8C0B-4AE6-A7BC-440D94DEC9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA8392AE-8C0B-4AE6-A7BC-440D94DEC9D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
